@@ -65,11 +65,10 @@ fn test_mean_two() {
 /// assert_eq!(Some(0.0), stddev(&[1.0, 1.0]));
 /// ```
 pub fn stddev(nums: &[f64]) -> Option<f64> {
-    let count = nums.len() as f64;
     let mut sigma = 0.0;
-    let xbar = mean(nums).unwrap() as f64; //no error since mean will be Some
     let mut sqnums = Vec::new();
-    if count != 0.0 {
+    let xbar = mean(nums).unwrap() as f64; //no error since mean will be Some
+    if !nums.is_empty() {
         for val in &nums[..] {
             let temp = (val - xbar).powf(2.0);
             sqnums.push(temp);
@@ -159,9 +158,7 @@ fn test_median_two() {
 pub fn l2(nums: &[f64]) -> Option<f64> {
     let mut norm = 0.0;
     let mut sum = 0.0;
-    //let count = nums.len() as f64;
-    //if count != 0.0 {
-    if nums.len() != 0 {
+    if !nums.is_empty() {
         for val in &nums[..] {
             sum += val.powf(2.0);
         }
