@@ -1,4 +1,4 @@
-# Copyright © 2019 Bart Massey
+# Copyright © 2019 Sharice Mayer
 # [This program is licensed under the "MIT License"]
 # Please see the file LICENSE in the source
 # distribution of this software for license terms.
@@ -6,7 +6,7 @@
 [package]
 name = "stats"
 version = "0.1.0"
-authors = ["Bart Massey <bart@cs.pdx.edu>"]
+authors = ["Sharice Mayer <shama2@pdx.edu>"]
 edition = "2018"
 
 [dependencies]
