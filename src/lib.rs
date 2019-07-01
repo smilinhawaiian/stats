@@ -117,7 +117,7 @@ pub fn median(nums: &[f64]) -> Option<f64> {
     nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
     let mut index = nums.len();
     if index != 0 {
-        index = ((index-1)/2);
+        index = (index-1)/2;
         let med = nums[index];
         Some(med)
     } else {
@@ -154,7 +154,17 @@ fn test_median_two(){
 /// assert_eq!(Some(5.0), l2(&[-3.0, 4.0]));
 /// ```
 pub fn l2(nums: &[f64]) -> Option<f64> {
-    unimplemented!("no l2 yet")
+    let mut norm = 0.0;
+    let mut sum = 0.0;
+    //let count = nums.len() as f64;
+    //if count != 0.0 {
+    if nums.len() != 0 {
+        for val in &nums[..] {
+            sum += val.powf(2.0);
+        }
+        norm = sum.sqrt();
+    }
+    Some(norm)
 }
 
 #[test]
