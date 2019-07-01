@@ -31,23 +31,23 @@ pub fn mean(nums: &[f64]) -> Option<f64> {
         for num in &nums[..] {
             sum += num;
         }
-        arithmetic = sum/count;
+        arithmetic = sum / count;
     }
     Some(arithmetic)
 }
 
 #[test]
-fn test_mean_100(){
-    assert_eq!(Some(100.0), mean(&[75.5,100.5,95.5,265.5,-37.0]));
+fn test_mean_100() {
+    assert_eq!(Some(100.0), mean(&[75.5, 100.5, 95.5, 265.5, -37.0]));
 }
 
 #[test]
-fn test_mean_single(){
+fn test_mean_single() {
     assert_eq!(Some(25.0), mean(&[25.0]));
 }
 
 #[test]
-fn test_mean_two(){
+fn test_mean_two() {
     assert_eq!(Some(1.0), mean(&[-1.0, 3.0]));
 }
 
@@ -67,7 +67,7 @@ fn test_mean_two(){
 pub fn stddev(nums: &[f64]) -> Option<f64> {
     let count = nums.len() as f64;
     let mut sigma = 0.0;
-    let xbar = mean(nums).unwrap() as f64;//no error since mean will be Some
+    let xbar = mean(nums).unwrap() as f64; //no error since mean will be Some
     let mut sqnums = Vec::new();
     if count != 0.0 {
         for val in &nums[..] {
@@ -82,17 +82,20 @@ pub fn stddev(nums: &[f64]) -> Option<f64> {
 }
 
 #[test]
-fn test_stdev_97(){
-    assert_eq!(97.0, stddev(&[75.5,100.5,95.5,265.5,-37.0]).unwrap().round());
+fn test_stdev_97() {
+    assert_eq!(
+        97.0,
+        stddev(&[75.5, 100.5, 95.5, 265.5, -37.0]).unwrap().round()
+    );
 }
 
 #[test]
-fn test_stdev_single(){
+fn test_stdev_single() {
     assert_eq!(Some(0.0), stddev(&[25.0]));
 }
 
 #[test]
-fn test_stdev_two(){
+fn test_stdev_two() {
     assert_eq!(Some(2.0), stddev(&[-1.0, 3.0]));
 }
 
@@ -117,7 +120,7 @@ pub fn median(nums: &[f64]) -> Option<f64> {
     nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
     let mut index = nums.len();
     if index != 0 {
-        index = (index-1)/2;
+        index = (index - 1) / 2;
         let med = nums[index];
         Some(med)
     } else {
@@ -126,17 +129,17 @@ pub fn median(nums: &[f64]) -> Option<f64> {
 }
 
 #[test]
-fn test_median_95(){
-    assert_eq!(Some(95.5), median(&[75.5,100.5,95.5,265.5,-37.0]));
+fn test_median_95() {
+    assert_eq!(Some(95.5), median(&[75.5, 100.5, 95.5, 265.5, -37.0]));
 }
 
 #[test]
-fn test_median_single(){
+fn test_median_single() {
     assert_eq!(Some(25.0), median(&[25.0]));
 }
 
 #[test]
-fn test_median_two(){
+fn test_median_two() {
     assert_eq!(Some(-1.0), median(&[-1.0, 3.0]));
 }
 
@@ -168,16 +171,19 @@ pub fn l2(nums: &[f64]) -> Option<f64> {
 }
 
 #[test]
-fn test_l2_311(){
-    assert_eq!(311.0, l2(&[75.5,100.5,95.5,265.5,-37.0]).unwrap().round());
+fn test_l2_311() {
+    assert_eq!(
+        311.0,
+        l2(&[75.5, 100.5, 95.5, 265.5, -37.0]).unwrap().round()
+    );
 }
 
 #[test]
-fn test_l2_single(){
+fn test_l2_single() {
     assert_eq!(Some(25.0), l2(&[25.0]));
 }
 
 #[test]
-fn test_l2_two(){
+fn test_l2_two() {
     assert_eq!(3.0, l2(&[-1.0, 3.0]).unwrap().round());
 }
