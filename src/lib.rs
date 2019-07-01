@@ -67,11 +67,9 @@ fn test_mean_two(){
 pub fn stddev(nums: &[f64]) -> Option<f64> {
     let count = nums.len() as f64;
     let mut sigma = 0.0;
-    let mut i = 0;
     let xbar = mean(nums).unwrap() as f64;//no error since mean will be Some
     let mut sqnums = Vec::new();
     if count != 0.0 {
-        //let mut sigma = 0.0;
         for val in &nums[..] {
             let temp = (val - xbar).powf(2.0);
             sqnums.push(temp);
@@ -117,8 +115,11 @@ pub fn median(nums: &[f64]) -> Option<f64> {
     let mut nums = nums.to_owned();
     // https://users.rust-lang.org/t/how-to-sort-a-vec-of-floats/2838/2
     nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
-    if nums.len() != 0 {
-        Some(0.0)//placeholder
+    let mut index = nums.len();
+    if index != 0 {
+        index = ((index-1)/2);
+        let med = nums[index];
+        Some(med)
     } else {
         None
     }
@@ -158,7 +159,7 @@ pub fn l2(nums: &[f64]) -> Option<f64> {
 
 #[test]
 fn test_l2_311(){
-    assert_eq!(Some(311.0948408), l2(&[75.5,100.5,95.5,265.5,-37.0]));
+    assert_eq!(311.0, l2(&[75.5,100.5,95.5,265.5,-37.0]).unwrap().round());
 }
 
 #[test]
@@ -168,5 +169,5 @@ fn test_l2_single(){
 
 #[test]
 fn test_l2_two(){
-    assert_eq!(Some(3.162277660), l2(&[-1.0, 3.0]));
+    assert_eq!(3.0, l2(&[-1.0, 3.0]).unwrap().round());
 }
